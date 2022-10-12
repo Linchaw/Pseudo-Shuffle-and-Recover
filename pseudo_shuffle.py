@@ -3,6 +3,10 @@ import cv2
 
 
 def cv_show(img):
+    “”“
+    show a image.
+    :param img: image to show
+    ”“”
     cv2.imshow('image', img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
