@@ -1,11 +1,14 @@
 # Pseudo-Shuffle-and-Recover （有中文介绍）
 Pseudo shuffle for bytes, array(numpy),  image(open by opencv) and Recover <br>
-requirements ： pip install numpy opencv
+requirements ： pip install numpy
 
 # 中文：
 对字符串数据，以及numpy的数组数据（包括图像）进行随机置乱
 并且可以通过相同的随机数种子对置乱的图像恢复
 ## 对字节数据置乱的例子 
+生成固定长度的随机字节串：<br>
+`rand_bytes = new_rand_bytes(length=32, seed=0)`<br>
+
 原始字节数据：<br>
 `bytes = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x02\x00\x00\x00\x02\x00\x08\x02\x00\x00\x00{\x1aC'`<br>
 
