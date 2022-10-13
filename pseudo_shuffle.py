@@ -1,15 +1,4 @@
 import numpy as np
-import cv2
-
-
-def cv_show(img):
-    “”“
-    show a image.
-    :param img: image to show
-    ”“”
-    cv2.imshow('image', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
 
 
 def pseudo_shuffle(array, seed=0):
@@ -105,21 +94,36 @@ def bytes_sort(data, seed=0):
     return bytes(sort_data)
 
 
+def new_rand_bytes(length=32, seed=0):
+    """
+    Generate new bytes.
+    :param length: length of bytes
+    :param seed: seed for random number generator
+    :return: new bytes
+    """
+    np.random.seed(seed)
+    random_array = np.random.randint(0, 256, length)
+    data = bytearray(length)
+    for i in range(length):
+        data[i] = random_array[i]
+    return bytes(data)
+
+
 def main():
     """Main function."""
-    # test to shuffle image
-    array = cv2.imread('lena.png')
-    shuffle_array = pseudo_shuffle(array, seed=1)
-    recover_array = pseudo_sort(shuffle_array, seed=1)
-    cv_show(shuffle_array)
-    cv_show(recover_array)
+    # # test to shuffle bytes
+    # with open('lena.png', 'rb') as f:
+    #     data = f.read(32)
+    # shuffle_data = bytes_shuffle(data, seed=1)
+    # recover_data = bytes_sort(shuffle_data, seed=1)
+    # print(data)
+    # print(shuffle_data)
+    # print(recover_data)
 
-    # test to shuffle bytes
-    with open('lena.png', 'rb') as f:
-        data = f.read()
-    shuffle_data = bytes_shuffle(data, seed=1)
-    recover_data = bytes_sort(shuffle_data, seed=1)
-    print(data == recover_data)
+    # # test to shuffle array
+    # rand_bytes = new_rand_bytes()
+
+    pass
 
 
 if __name__ == '__main__':
